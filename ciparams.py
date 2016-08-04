@@ -39,7 +39,7 @@ def main():
 
 
         if value:
-            print "export {}={}".format(prevparam, value)
+            print "export {}=\"{}\"".format(prevparam, value)
 
         prevparam = param
 
