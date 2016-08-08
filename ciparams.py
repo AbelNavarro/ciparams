@@ -18,6 +18,15 @@ def main():
     url = "https://ci.suse.de/job/openstack-mkcloud/{}/parameters".format(args.build_number)
     print "# url: " + url
 
+    # Fixed parameters from CI builder
+    # https://github.com/SUSE-Cloud/automation/blob/master/scripts/jenkins/ci.suse.de/openstack-mkcloud.xml#L245
+    print 
+    print "# Fixed parameters from CI builder"
+    print "export cephvolumenumber=1"
+    print "export want_neutronsles12=1"
+    print "export want_mtu_size=8900"
+    print 
+
     context = ssl._create_unverified_context()
     data = urllib2.urlopen(url, context=context)
     prevparam = 'cloudsource'
