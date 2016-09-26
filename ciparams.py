@@ -26,6 +26,8 @@ def main():
     print "export want_neutronsles12=1"
     print "export want_mtu_size=8900"
     print 
+    print "export clusterconfig=data+services+network=2"
+    print 
 
     context = ssl._create_unverified_context()
     data = urllib2.urlopen(url, context=context)
@@ -47,7 +49,9 @@ def main():
             param = cleanelem
 
 
-        if value:
+        if value and value is not " ":
+            if 'Incaseof' in prevparam:
+                prevparam='hacloud'
             print "export {}=\"{}\"".format(prevparam, value)
 
         prevparam = param
