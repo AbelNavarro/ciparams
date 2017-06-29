@@ -25,7 +25,15 @@ def main():
         else:
             value=parameter['value']
 
-        print "export " + parameter['name'] + "=\"" + value + "\""
+        # Set default clusterconfig if not defined
+        if parameter['name'] == 'clusterconfig':
+            if parameter['value']:
+                print "export clusterconfig=" + parameter['value']
+            else:
+                print "export clusterconfig=data+services+network=2"
+
+        else:
+            print "export " + parameter['name'] + "=\"" + value + "\""
     
 
 if __name__ == '__main__':
