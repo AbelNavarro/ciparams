@@ -11,7 +11,7 @@ def main():
 
     print "build_number: {}".format(args.build_number)
 
-    j = Jenkins('http://ci.suse.de')
+    j = Jenkins('http://ci.suse.de', ssl_verify=False)
     job = j.get_job("openstack-mkcloud")
     build = job.get_build(args.build_number)
     parameters = build.get_actions()['parameters']
